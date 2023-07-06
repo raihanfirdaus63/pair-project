@@ -1,0 +1,14 @@
+1. create table Users
+    npx sequelize model:generate --name User --attributes userName:string,email:string,password:string
+2. create table Profiles
+    npx sequelize model:generate --name Profile --attributes name:string,birthOfDate:date,address:string,phone:string,balance:integer,payment:string
+
+    add column portfolio 
+    npx sequelize-cli migration:generate --name add-portfolio-column-to-Profiles-table
+
+    add column UserId 
+    npx sequelize-cli migration:generate --name add-UserId-column-to-Profiles-table
+3. create table Products 
+    npx sequelize model:generate --name Product --attributes name:string,description:string,risk:string,ProfileId:integer,price:integer,imageUrl:string
+4. create table HistoryPrices
+    npx sequelize model:generate --name HistoryPrice --attributes name:string,price:integer,date:date,ProductId:integer

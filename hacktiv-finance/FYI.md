@@ -1,7 +1,7 @@
-Judul       :   Hacktiv Finance
-Description :   Aplikasi website ini akan menyediakan layanan penghubung antara user (investor) dan company sebagai penyedia layanan investasi.
-                Dalam hal ini kami hanya menyediakan satu contoh company yang menyediakan jasa layanan product investasi.
-                Adapun layanan investasi yang diberikan oleh company diantaranya adalah Emas, Crypto, Bitcoin.
+Judul       :   MLM Fintech
+Description :   Aplikasi website ini akan menyediakan layanan investasi untuk user.
+                Adapun layanan investasi yang diberikan oleh company diantaranya adalah Emas, Saham, Obligasi, Crypto.
+
 Alur        :   - Tampilan awal (dashboard)
                     1. User diminta untuk sign up / login melalui sebuah link
                     2. Popup form login/sign up dalam bentuk card
@@ -29,3 +29,5 @@ Alur        :   - Tampilan awal (dashboard)
                         - berisi tampilan data company
                     7. logout
                         - logout dari layanan dan akan dilempar dihalaman dashboard
+
+Akses localhost dengan comand npm start >>> menjalankan nodemon
