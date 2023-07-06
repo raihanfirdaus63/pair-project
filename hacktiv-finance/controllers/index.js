@@ -123,7 +123,6 @@ class Controller {
             res.send(err);
         });
     }
-    
     static showProducts(req, res){
         const { search } = req.query
         let opt = {
@@ -145,7 +144,30 @@ class Controller {
             })
             .catch(err => {
                 res.send(err)
-                console.log(err);
+                // console.log(err);
+            })
+    }
+    static buyStock(req, res){
+        const {id} = req.params
+        const {userId} = req.session
+
+        let opt = {
+        //     include: [{
+        //         model: Order, 
+        //         where: {id : Order.ProductId}, 
+        // }],
+        //     where: {id}
+        }
+        Product.findAll(opt)
+            .then(data => {
+                // console.log(userId);
+                // res.send(data)
+                const string = JSON.stringify(data)
+                res.render('buy', {data, string, rupiahformatter})
+            })
+            .catch(err => {
+                res.send(err)
+                // console.log(err);
             })
     }
 }

@@ -21,6 +21,8 @@ router.get('/add-profile/:id', Controller.getAddProfile)
 router.post('/add-profile/:id', Controller.postAddProfile)
 router.get('/profile/:id/edit', Controller.getEditProfile)
 router.post('/profile/:id/edit', Controller.postEditProfile)
+// router.get('/profile/:id/products', Controller.getEditProfile)
+router.get('/products/:id', Controller.buyStock)
 router.get('/products', Controller.showProducts)
 
 
