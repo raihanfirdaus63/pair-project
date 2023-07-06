@@ -64,7 +64,10 @@ class Controller {
         })
     }
     static showProducts(req, res){
-        Product.findAll()
+        let opt = {
+            include: HistoryPrice
+        }
+        Product.findAll(opt)
             .then(data => {
                 res.send({data})
                 res.render('products', {data})
