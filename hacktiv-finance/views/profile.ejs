@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <%- include('./link/style.ejs') %>
+    <title>Home</title>
+</head>
+<body>
+ <div class="wrapper">
+    <%- include('./link/navbar-login.ejs') %>
+    <section>
+        <% if (!data.Profile) { %>
+            <h3 style="color: red;"> Silahkan isi data diri terlebih dahulu</h3>
+            <a href="/add-profile/<%= data.id %>"> Add Data Diri</a>
+        <% } else { %>
+            <div>
+                <div class="card" style="width: 30rem;">
+                    <div class="card-header" style="color: brown;">
+                      Your Data Profile
+                    </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Name          : <%= data.Profile.name %></li>
+                          <li class="list-group-item">Birth Date    : <%= data.Profile.birthOfDate %></li>
+                          <li class="list-group-item">Address       : <%= data.Profile.address %></li>
+                          <li class="list-group-item">Phone         : <%= data.Profile.phone %></li>
+                          <li class="list-group-item">Balance       : <%= data.Profile.balance %></li>
+                          <li class="list-group-item">Payment       : <%= data.Profile.payment %></li>
+                          <li class="list-group-item"><a href="/profile/<%= data.id %>/edit"class="btn btn-info">Edit Data</a></li>
+                        </ul>
+                  </div>
+            </div>
+        <%} %>
+    </section>
+<script>
+   
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+<%- include('./link/boostrap.ejs') %>
+</body>
+</html>

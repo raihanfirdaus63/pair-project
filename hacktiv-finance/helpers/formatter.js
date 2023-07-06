@@ -4,5 +4,8 @@ module.exports = {
             style: "currency",
             currency: "IDR"
         }).format(number);
+    },
+    formattedDate: (data) =>{
+        return new  data.toISOString().split('T')[0]
     }
 }

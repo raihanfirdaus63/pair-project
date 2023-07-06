@@ -25,12 +25,13 @@ class Controller {
             }
         })
         .then(user=>{
+            // console.log(user);
             if(user){
                 const isValidPassword = bcrypt.compareSync(password, user.password)
                 if (isValidPassword) {
                     req.session.userId = user.id
 
-                    return res.render('home-konten')
+                    return res.redirect(`/profile/${user.id}`)
                 } else {
                     const error = 'invalid username/password'
                     return res.redirect(`/?error=${error}`)
@@ -43,6 +44,19 @@ class Controller {
         .catch(err=>{
             res.send(err)
         })
+    }
+    static findAllProfile(req,res){
+        const id = req.session.userId
+        User.findByPk(+id, {
+            include :{
+                model: Profile
+            }
+        })
+        .then((data)=>{
+            res.render('profile', { data })
+        })
+        .catch((err)=>{res.send(err)})
+
     }
     static getAddProfile(req, res){
         const {error} = req.query
@@ -62,6 +76,19 @@ class Controller {
                 res.send(err)
             }
         })
+    }
+    static getEditProfile(req,res){
+        const id = req.session.userId
+        User.findByPk(+id, {
+            include :{
+                model: Profile
+            }
+        })
+        .then((data)=>{
+            res.render('edit-profile', { data })
+        })
+        .catch((err)=>{res.send(err)})
+
     }
     static showProducts(req, res){
         let opt = {
