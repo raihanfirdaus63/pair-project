@@ -31,3 +31,7 @@ Alur        :   - Tampilan awal (dashboard)
                         - logout dari layanan dan akan dilempar dihalaman dashboard
 
 Akses localhost dengan comand npm start >>> menjalankan nodemon
+
+npm install express-session
+
+npm i bcryptjs
