@@ -12,6 +12,8 @@
  <div class="wrapper">
     <%- include('./link/navbar-login.ejs') %>
     <section class="container">
+      <br>
+      
       <div class="container" style="background-color: rgba(240, 248, 255, 0.55); padding: 30px; border-radius: 20px;">
         <form action="/add-profile/<%= data.id %>" method="post">
           <div class="mb-3">
@@ -40,7 +42,6 @@
               </select>
             </div>
             <div class="mb-3">
-              <label class="form-label">User Id</label>
               <input type="number" hidden class="form-control" name="UserId" value="<%= data.id %>">
             </div>
             <button type="subimt" class="btn btn-danger"> Submit</button>

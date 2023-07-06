@@ -17,7 +17,7 @@
             <a href="/add-profile/<%= data.id %>"> Add Data Diri</a>
         <% } else { %>
             <div class="container" style="background-color: rgba(240, 248, 255, 0.55); padding: 30px; border-radius: 20px;">
-                <form action="/profile/<%= data.id %>/edit" method="post">
+                <form action="/profile/<%= data.Profile.id %>/edit" method="post">
                     <div class="mb-3">
                       <label for="name" class="form-label">Name</label>
                       <input type="text" class="form-control" name ="name" value="<%= data.Profile.name %>">

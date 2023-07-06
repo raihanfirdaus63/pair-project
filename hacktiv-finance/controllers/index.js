@@ -34,7 +34,6 @@ class Controller {
                 const isValidPassword = bcrypt.compareSync(password, user.password)
                 if (isValidPassword) {
                     req.session.userId = user.id
-
                     return res.redirect(`/profile/${user.id}`)
                 } else {
                     const error = 'invalid username/password'
@@ -62,6 +61,18 @@ class Controller {
         .catch((err)=>{res.send(err)})
 
     }
+    static findAllProfiles(req,res){
+        const id = req.session.userId
+        User.findByPk(+id, {
+            include :{
+                model: Profile
+            }
+        })
+        .then((data)=>{
+            res.render('profile-2', { data, rupiahformatter})
+        })
+        .catch((err)=>{res.send(err)})
+    }
     static getAddProfile(req, res){
         const id =req.session.userId
         User.findByPk(+id, {
@@ -79,6 +90,7 @@ class Controller {
     static postAddProfile(req, res){
         const id = req.session.userId
         const {name, birthOfDate, address, phone, payment, UserId} = req.body
+        console.log(req.body);
         Profile.create(
             {name, birthOfDate, address, phone, payment, UserId},
             { where : { id }}
@@ -103,7 +115,7 @@ class Controller {
             }
         })
         .then((data)=>{
-            res.render('edit-profile', { data })
+            res.render('edit-profile', { data, rupiahformatter })
         })
         .catch((err)=>{res.send(err)})
 
@@ -117,12 +129,39 @@ class Controller {
             { where: { id } }
         )
         .then((data) => {
-            res.redirect(`/profile/${id}`);
+            res.redirect(`/profile-2/${id}`);
         })
         .catch((err) => {
             res.send(err);
         });
     }
+    static getTopup(req,res){
+        const id = req.session.userId
+        User.findByPk(+id, {
+            include :{
+                model: Profile
+            }
+        })
+        .then((data)=>{
+            res.render('topup-profile', { data , rupiahformatter})
+        })
+        .catch((err)=>{res.send(err)})
+    }
+    static postTopup(req,res){
+        const id = req.session.userId
+        const { balance } = req.body
+        Profile.increment(
+            { balance: balance },
+            { where: { id } }
+        )
+        .then((data)=>{
+            res.redirect(`/profile-2/${id}`)
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
+    
     static showProducts(req, res){
         const { search } = req.query
         let opt = {

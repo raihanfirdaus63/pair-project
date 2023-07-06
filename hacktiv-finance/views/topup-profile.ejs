@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <%- include('./link/style.ejs') %>
+    <title>Topup Form</title>
+</head>
+<body>
+ <div class="wrapper">
+    <%- include('./link/navbar-login.ejs') %>
+    <section class="container">
+      <br>
+      
+      <div class="container" style="background-color: rgba(240, 248, 255, 0.55); padding: 30px; border-radius: 20px;">
+        <form action="/profile-2/<%= data.id %>/topup" method="post">
+          <div class="mb-3">
+            <h5 class="text-center"> Minimum Topup Rp 100.000,00</h5>
+              <label class="form-label" style=" font-size: 20px;">Nominal Topup</label>
+              <input type="number" class="form-control" name="balance">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" style=" font-size: 20px;">Payment method</label>
+                <select class="form-select">
+                  <option selected disabled>-- Choose your payment method --</option>
+                  <option value="bank-transfer">Bank Transfer</option>
+                  <option value="qris">QRIS</option>
+                  <option value="visa">Visa</option>
+                </select>
+              </div>
+            <button type="subimt" class="btn btn-primary"> Submit</button>
+      </form>
+      </div>
+    </section>
+<script>
+   
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+<%- include('./link/boostrap.ejs') %>
+</body>
+</html>
