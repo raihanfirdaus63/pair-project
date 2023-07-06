@@ -9,6 +9,13 @@
     add column UserId 
     npx sequelize-cli migration:generate --name add-UserId-column-to-Profiles-table
 3. create table Products 
-    npx sequelize model:generate --name Product --attributes name:string,description:string,risk:string,ProfileId:integer,price:integer,imageUrl:string
-4. create table HistoryPrices
-    npx sequelize model:generate --name HistoryPrice --attributes name:string,price:integer,date:date,ProductId:integer
+    npx sequelize model:generate --name Product --attributes name:string,description:string,risk:string,price:integer,imageUrl:string
+4. create table konjungsi Orders
+    npx sequelize model:generate --name Order --attributes ProfileId:integer,ProductId:integer
+5. create table HistoryPrices
+    npx sequelize model:generate --name HistoryPrice --attributes price:integer,date:date,ProductId:integer
+
+            references : {
+          model : 'Products',
+          key : 'id'
+        }
