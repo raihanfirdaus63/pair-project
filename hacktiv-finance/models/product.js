@@ -11,13 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.hasMany(models.HistoryPrice)
+      Product.hasOne(models.Order)
+      Product.belongsToMany(models.Profile, {through: models.Order})
     }
   }
   Product.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     risk: DataTypes.STRING,
-    ProfileId: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     imageUrl: DataTypes.STRING
   }, {

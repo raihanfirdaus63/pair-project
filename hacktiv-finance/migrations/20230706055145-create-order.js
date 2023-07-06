@@ -1,22 +1,20 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-   up(queryInterface, Sequelize) {
-    return queryInterface.createTable('HistoryPrices', {
+  up(queryInterface, Sequelize) {
+    return queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      date: {
-        type: Sequelize.DATE
+      ProfileId: {
+        type: Sequelize.INTEGER,
+        references : {
+          model : 'Profiles',
+          key : 'id'
+        }
       },
       ProductId: {
         type: Sequelize.INTEGER,
@@ -35,7 +33,7 @@ module.exports = {
       }
     });
   },
-   down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('HistoryPrices');
+  down(queryInterface, Sequelize) {
+    return queryInterface.dropTable('Orders');
   }
 };

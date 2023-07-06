@@ -1,7 +1,7 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-   up(queryInterface, Sequelize) {
+  up(queryInterface, Sequelize) {
     return queryInterface.createTable('Products', {
       id: {
         allowNull: false,
@@ -17,13 +17,6 @@ module.exports = {
       },
       risk: {
         type: Sequelize.STRING
-      },
-      ProfileId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model : 'Profiles',
-          key : 'id'
-        }
       },
       price: {
         type: Sequelize.INTEGER
@@ -41,7 +34,7 @@ module.exports = {
       }
     });
   },
-   down(queryInterface, Sequelize) {
+  down(queryInterface, Sequelize) {
     return queryInterface.dropTable('Products');
   }
 };
