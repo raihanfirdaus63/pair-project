@@ -10,7 +10,7 @@ class Controller {
         // console.log(req.body);
         User.create({ userName, email, password })
         .then((data)=>{
-            res.render('home')
+            res.redirect('/')
         })
         .catch((err)=>{
             // console.log(err);
