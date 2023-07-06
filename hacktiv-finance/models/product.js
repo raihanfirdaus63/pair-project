@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Product.hasMany(models.HistoryPrice)
-      Product.hasOne(models.Order)
+      Product.hasMany(models.Order)
       Product.belongsToMany(models.Profile, {through: models.Order})
     }
   }

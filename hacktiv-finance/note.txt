@@ -15,7 +15,7 @@
 5. create table HistoryPrices
     npx sequelize model:generate --name HistoryPrice --attributes price:integer,date:date,ProductId:integer
 
-            references : {
-          model : 'Products',
-          key : 'id'
-        }
+1.create seed Products
+npx sequelize seed:create --name seedProduct
+2.create seed HistoryPrice
+npx sequelize seed:create --name seedHistoryPrice
