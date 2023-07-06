@@ -2,7 +2,8 @@ const { User, Profile, Product, History } = require('../models')
 const bcrypt = require('bcryptjs')
 class Controller {
     static home (req,res){
-        res.render('home')
+        const {error} = req.query 
+        res.render('home', { error })
     }
     static register(req,res){
         const { userName, email, password } = req.body
@@ -27,14 +28,16 @@ class Controller {
             if(user){
                 const isValidPassword = bcrypt.compareSync(password, user.password)
                 if (isValidPassword) {
-                    return res.render('profile')
+                    req.session.userId = user.id
+
+                    return res.render('home-konten')
                 } else {
-                    const error = 'invalid/username'
-                    return res.redirect(`/home?error=${error}`)
+                    const error = 'invalid username/password'
+                    return res.redirect(`/?error=${error}`)
                 }
             }else {
-                const error = 'invalid/username'
-                return res.redirect(`/home?error=${error}`)
+                const error = 'invalid username/password'
+                return res.redirect(`/?error=${error}`)
             }
         })
         .catch(err=>{

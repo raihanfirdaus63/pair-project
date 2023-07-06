@@ -30,6 +30,11 @@
         
 
         <div class="login-container" id="login">
+            <div>
+                <% if (error) { %>
+                    <p style="color: red;"> <%= error %></p>
+                <% } %>
+            </div>
             <div class="top">
                 <header>Login</header>
             </div>
