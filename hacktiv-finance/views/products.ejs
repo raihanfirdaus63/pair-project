@@ -9,7 +9,11 @@
     <%- include('./link/navbar-login') %>
     <div class="container text-center">
         <div class="row align-items-start">
-            <div class="col-6">
+            <form action="/products" method="get">
+                    <input type="text" name="search" class="form-control">
+                    <button type="submit" class="btn btn-outline-info">Search</button>
+                </form>
+            <div class="col-12">
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -19,16 +23,24 @@
                             <th scope="col">Risk</th>
                             <th scope="col">Price</th>
                             <th scope="col">Image</th>
+                            <th scope="col">Chart</th>
                         </tr>
                         </thead>
                         <tbody>
                             <% data.forEach(el => { %>
                                 <tr>
-                                <td><%= el.name %></td>
-                                <td><%= el.description %></td>
-                                <td><%= el.risk %></td>
-                                <td><%= rupiahformatter(el.price) %></td>
-                                <img src="<%= el.imageUrl %>" >
+                                <td style="vertical-align: middle"><%= el.name %></td>
+                                <td width="350px" style="vertical-align: middle"><%= el.description %></td>
+                                <td style="vertical-align: middle"><%= el.risk %></td>
+                                <td style="vertical-align: middle"><%= rupiahformatter(el.price) %></td>
+                                <td style="vertical-align: middle">
+                                    <img width="100px" src="<%= el.imageUrl %>" >
+
+                                </td>
+                                <td>
+                                    <canvas id="<%= el.name %>"></canvas>
+
+                                </td>
                                 </tr>
                             <% }) %>
                         </tbody>
