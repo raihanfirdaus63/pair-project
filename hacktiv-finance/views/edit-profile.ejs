@@ -23,9 +23,8 @@
                       <input type="text" class="form-control" name ="name" value="<%= data.Profile.name %>">
                     </div>
                     <div class="mb-3">
-                        <label for="dateOfBirth" class="form-label">Birth Day</label>
-                        <% const formattedDateOfBirth = data.Profile.birthOfDate ? data.Profile.birthOfDate.toISOString().split('T')[0] : ''; %>
-                        <input type="date" class="form-control" name="birthOfDate" value="<%= formattedDateOfBirth %>">
+                        <label for="name" class="form-label">Date</label>
+                        <input type="text" class="form-control" name ="date" value="<%= data.Profile.date %>">
                       </div>                      
                       <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
