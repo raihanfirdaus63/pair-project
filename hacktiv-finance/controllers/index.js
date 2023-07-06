@@ -1,4 +1,4 @@
-const { User, Profile, Product, History } = require('../models')
+const { User, Profile, Product, HistoryPrice, Order } = require('../models')
 const bcrypt = require('bcryptjs')
 class Controller {
     static home (req,res){
@@ -43,6 +43,35 @@ class Controller {
         .catch(err=>{
             res.send(err)
         })
+    }
+    static getAddProfile(req, res){
+        const {error} = req.query
+        res.render('add', {error})
+    }
+    static postAddProfile(req, res){
+        const {name, birthOfDate, address, phone, payment} = req.body
+        Profile.create({name, birthOfDate, address, phone, payment})
+        .then(data => {
+            res.redirect('/')
+        })
+        .catch(err => {
+            if (err.name === "SequelizeValidationError") {
+                const errs = err.errors.map(el => el.message)
+                res.redirect(`/profile?error=${errs}`)
+            } else {
+                res.send(err)
+            }
+        })
+    }
+    static showProducts(req, res){
+        Product.findAll()
+            .then(data => {
+                res.send({data})
+                res.render('products', {data})
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
 }
 

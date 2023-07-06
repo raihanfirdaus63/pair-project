@@ -1,0 +1,37 @@
+[
+    {
+        "name": "BBCA",
+        "description": "PT Bank Central Asia Tbk adalah bank swasta terbesar di Indonesia. Bank ini didirikan pada 21 Februari 1957.",
+        "risk": "Low",
+        "price": 10000,
+        "imageUrl": "https://example.com/bbca-image.jpg"
+    },
+    {
+        "name": "GOTO",
+        "description": "PT GoTo Gojek Tokopedia Tbk adalah perusahaan ekosistem digital berbasis teknologi yang beroperasi di Indonesia, yang dibentuk sebagai penggabungan antara Gojek dan Tokopedia.",
+        "risk": "High",
+        "price": 100,
+        "imageUrl": "https://example.com/goto-image.jpg"
+    },
+    {
+        "name": "UNVR",
+        "description": "PT Unilever Indonesia Tbk adalah perusahaan yang bergerak di bidang produk konsumen.",
+        "risk": "Low",
+        "price": 4000,
+        "imageUrl": "https://example.com/unvr-image.jpg"
+    },
+    {
+        "name": "TLKM",
+        "description": "PT Telekomunikasi Indonesia Tbk adalah perusahaan telekomunikasi terbesar di Indonesia.",
+        "risk": "Medium",
+        "price": 4000,
+        "imageUrl": "https://example.com/tlkm-image.jpg"
+    },
+    {
+        "name": "MNCN",
+        "description": "PT Media Nusantara Citra Tbk adalah perusahaan media terkemuka di Indonesia.",
+        "risk": "High",
+        "price": 800,
+        "imageUrl": "https://example.com/mncn-image.jpg"
+    }
+]
