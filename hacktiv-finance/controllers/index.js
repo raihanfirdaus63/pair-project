@@ -1,3 +1,4 @@
+const { rupiahformatter } = require('../helpers/formatter')
 const { User, Profile, Product, HistoryPrice, Order } = require('../models')
 const bcrypt = require('bcryptjs')
 class Controller {
@@ -96,8 +97,9 @@ class Controller {
         }
         Product.findAll(opt)
             .then(data => {
-                res.send({data})
-                res.render('products', {data})
+                // res.send({data})
+                const string = JSON.stringify(data)
+                res.render('products', {data, string, rupiahformatter})
             })
             .catch(err => {
                 res.send(err)
