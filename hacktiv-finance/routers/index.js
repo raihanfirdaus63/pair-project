@@ -18,8 +18,9 @@ router.use(function(req,res,next){
 
 router.get('/profile/:id', Controller.findAllProfile)
 router.get('/add-profile/:id', Controller.getAddProfile)
+router.post('/add-profile/:id', Controller.postAddProfile)
 router.get('/profile/:id/edit', Controller.getEditProfile)
-router.post('/profile', Controller.postAddProfile)
+router.post('/profile/:id/edit', Controller.postEditProfile)
 router.get('/products', Controller.showProducts)
 
 

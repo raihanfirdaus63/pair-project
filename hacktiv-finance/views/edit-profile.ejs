@@ -23,9 +23,10 @@
                       <input type="text" class="form-control" name ="name" value="<%= data.Profile.name %>">
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Date</label>
-                        <input type="text" class="form-control" name ="date" value="<%= data.Profile.date %>">
-                      </div>                      
+                        <label for="birthOfDate" class="form-label">Birth Date</label>
+                        <input type="date" class="form-control" name="birthOfDate" value="<%= data.Profile.formatDate %>">
+                    </div>
+                                        
                       <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" class="form-control" name ="address" value="<%= data.Profile.address %>">

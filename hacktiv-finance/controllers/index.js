@@ -60,14 +60,28 @@ class Controller {
 
     }
     static getAddProfile(req, res){
-        const {error} = req.query
-        res.render('add', {error})
+        const id =req.session.userId
+        User.findByPk(+id, {
+            include:{
+                model: Profile
+            }
+        }) 
+        .then((data)=>{
+            res.render('add-profile', {data} )
+        }) 
+        .catch((err)=>{
+            res.send(err)
+        })
     }
     static postAddProfile(req, res){
-        const {name, birthOfDate, address, phone, payment} = req.body
-        Profile.create({name, birthOfDate, address, phone, payment})
+        const id = req.session.userId
+        const {name, birthOfDate, address, phone, payment, UserId} = req.body
+        Profile.create(
+            {name, birthOfDate, address, phone, payment, UserId},
+            { where : { id }}
+            )
         .then(data => {
-            res.redirect('/')
+            res.redirect(`/profile/${id}`)
         })
         .catch(err => {
             if (err.name === "SequelizeValidationError") {
@@ -91,6 +105,22 @@ class Controller {
         .catch((err)=>{res.send(err)})
 
     }
+    static postEditProfile(req, res) {
+        const id = req.session.userId;
+        const { name, birthOfDate, address, phone, payment } = req.body;
+    
+        Profile.update(
+            { name, birthOfDate, address, phone, payment },
+            { where: { id } }
+        )
+        .then((data) => {
+            res.redirect(`/profile/${id}`);
+        })
+        .catch((err) => {
+            res.send(err);
+        });
+    }
+    
     static showProducts(req, res){
         let opt = {
             include: HistoryPrice
@@ -103,6 +133,7 @@ class Controller {
             })
             .catch(err => {
                 res.send(err)
+                console.log(err);
             })
     }
 }

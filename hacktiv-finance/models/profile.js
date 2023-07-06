@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       Profile.hasMany(models.Order)
       Profile.belongsToMany(models.Product, {through: models.Order})
     }
+    get formatDate(){
+      return new Date(this.birthOfDate).toISOString().split('T')[0]
+    }
   }
   Profile.init({
     name: {
@@ -88,6 +91,12 @@ module.exports = (sequelize, DataTypes) => {
     portfolio: DataTypes.STRING,
     UserId: DataTypes.INTEGER
   }, {
+    // hooks: {
+    //   beforeCreate (instance){
+    //     const summary = instance.UserId + instance.id
+    //     instance.UserId = summary
+    //   }
+    // },
     sequelize,
     modelName: 'Profile',
   });
