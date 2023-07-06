@@ -13,14 +13,16 @@ router.use(function(req,res,next){
     } else {
         next()
     }
-
 })
 
 router.get('/profile/:id', Controller.findAllProfile)
+router.get('/profile-2/:id', Controller.findAllProfiles)
 router.get('/add-profile/:id', Controller.getAddProfile)
 router.post('/add-profile/:id', Controller.postAddProfile)
 router.get('/profile/:id/edit', Controller.getEditProfile)
 router.post('/profile/:id/edit', Controller.postEditProfile)
+router.get('/profile-2/:id/topup', Controller.getTopup)
+router.post('/profile-2/:id/topup', Controller.postTopup)
 router.get('/products', Controller.showProducts)
 
 

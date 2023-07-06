@@ -10,7 +10,7 @@
 </head>
 <body>
  <div class="wrapper">
-    <%- include('./link/navbar-login-active.ejs') %>
+    <%- include('./link/navbar-login.ejs') %>
     <section>
         <% if (!data.Profile) { %>
             <h3 style="color: red;"> Silahkan isi data diri terlebih dahulu</h3>
@@ -26,7 +26,7 @@
                           <li class="list-group-item">Birth Date    : <%= data.Profile.birthOfDate %></li>
                           <li class="list-group-item">Address       : <%= data.Profile.address %></li>
                           <li class="list-group-item">Phone         : <%= data.Profile.phone %></li>
-                          <li class="list-group-item">Balance       : <%= data.Profile.balance %></li>
+                          <li class="list-group-item">Balance       : <%= rupiahformatter(data.Profile.balance) %></li>
                           <li class="list-group-item">Payment       : <%= data.Profile.payment %></li>
                           <li class="list-group-item"><a href="/profile/<%= data.id %>/edit"class="btn btn-info">Edit Data</a></li>
                         </ul>
