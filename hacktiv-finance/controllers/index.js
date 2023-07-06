@@ -1,6 +1,9 @@
 const { rupiahformatter } = require('../helpers/formatter')
 const { User, Profile, Product, HistoryPrice, Order } = require('../models')
 const bcrypt = require('bcryptjs')
+const sequelize = require('sequelize')
+const { Op } = sequelize
+
 class Controller {
     static home (req,res){
         const {error} = req.query 
@@ -122,12 +125,21 @@ class Controller {
     }
     
     static showProducts(req, res){
+        const { search } = req.query
         let opt = {
-            include: HistoryPrice
+            include: {model: HistoryPrice},
+            where: {}
+        }
+        if (search) {
+            opt.where = {
+                name: {
+                    [Op.iLike]: `%${search}%`
+                }
+            }
         }
         Product.findAll(opt)
             .then(data => {
-                // res.send({data})
+                // res.send(data)
                 const string = JSON.stringify(data)
                 res.render('products', {data, string, rupiahformatter})
             })
